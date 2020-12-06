@@ -1,4 +1,4 @@
-# Week 000 - Introduction  
+# Notes 000 - Introduction  
 After spending some time looking into DOOM code and building up some knowledge, I wanted to look at another id software game source, and the next step from DOOM is Quake! I have lots of memory playing Quake! I still remember playing on my Pentium running at 90MHz with 8MB of RAM, and what an experience it was (and still is).  
 
 Remember I am just a computer graphics hobbyist, so before jumping in to Quake code, I decided to spend some time learning more about 3D math, computer graphics. I have learned a lot, and at some point, I wanted to go back to DIYDOOM and just start it from scratch. Looking at DIYDoom now, there is a lot I can improve on, but sometimes you must move forward and not keep iterating on the same thing (don't worry I will go back and improve on it at some point).  
@@ -193,7 +193,7 @@ Note: You can add ```-startwindowed``` as a startup argument if you want the gam
 Note: For debugging you can set break points in the code or call the function ```Con_Printf``` and print the output strings to the Quake console, don't forget to add ```-condebug``` as startup argument which will dump all the console text to a ```qconsole.log``` file for you.  
 
 ## Notes
-I will be keeping two copies of the original code, first copy of the code is under [Week000/src](../src) folder, this is WinQuake as it was released by id software (with minimal change to get it to compile) The second copy is under [misc](../../misc/src) folder which I will be using for debugging and tracing, I will be adding comments and renaming variables to help me trace and understand the code.  
+I will be keeping two copies of the original code, first copy of the code is under [Notes000/src](../src) folder, this is WinQuake as it was released by id software (with minimal change to get it to compile) The second copy is under [misc](../../misc/src) folder which I will be using for debugging and tracing, I will be adding comments and renaming variables to help me trace and understand the code.  
 
 ## Contributions  
 I'm not perfect, so If you find errors, bugs, concerned, or disagree with what I have, contact me, we are all here to learn and you will be credited.  
