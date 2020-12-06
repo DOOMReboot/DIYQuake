@@ -1,3 +1,6 @@
+Contributors  
+[kevansevans](https://github.com/kevansevans): organization suggestions
+
 # Notes 000 - Introduction  
 After spending some time looking into DOOM code and building up some knowledge, I wanted to look at another id software game source, and the next step from DOOM is Quake! I have lots of memory playing Quake! I still remember playing on my Pentium running at 90MHz with 8MB of RAM, and what an experience it was (and still is).  
 
