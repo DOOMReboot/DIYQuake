@@ -81,6 +81,7 @@ void* Mod_Extradata(model_t* mod)
 Mod_PointInLeaf
 ===============
 */
+// AngryCPPCoder: BSP iterative 
 mleaf_t* Mod_PointInLeaf(vec3_t p, model_t* model)
 {
 	mnode_t* node;

@@ -431,7 +431,8 @@ r_refdef.viewangles[2]=    0;
 
 	AngleVectors (r_refdef.viewangles, vpn, vright, vup);
 
-// current viewleaf
+	// current viewleaf
+	// AngryCPPCoder: find the player
 	r_oldviewleaf = r_viewleaf;
 	r_viewleaf = Mod_PointInLeaf (r_origin, cl.worldmodel);
 

@@ -639,14 +639,14 @@ void _Host_Frame(float time)
 	if (setjmp(host_abortserver))
 		return;			// something bad happened, or the server disconnected
 
-// keep the random time dependent
+	// keep the random time dependent
 	rand();
 
 	// decide the simulation time
 	if (!Host_FilterTime(time))
 		return;			// don't run too fast, or packets will flood out
 
-// get new key events
+	// get new key events
 	Sys_SendKeyEvents();
 
 	// allow mice or other external controllers to add commands

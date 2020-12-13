@@ -871,9 +871,9 @@ void SV_SendClientMessages (void)
 				SV_DropClient (false);	// went to another level
 			else
 			{
-				if (NET_SendMessage (host_client->netconnection
-				, &host_client->message) == -1)
+				if (NET_SendMessage (host_client->netconnection , &host_client->message) == -1)
 					SV_DropClient (true);	// if the message couldn't send, kick off
+
 				SZ_Clear (&host_client->message);
 				host_client->last_message = realtime;
 				host_client->sendsignon = false;

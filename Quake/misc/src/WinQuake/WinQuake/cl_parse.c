@@ -84,12 +84,12 @@ entity_t* CL_EntityNum(int num)
 			Host_Error("CL_EntityNum: %i is an invalid number", num);
 		while (cl.num_entities <= num)
 		{
-			cl_entities[cl.num_entities].colormap = display.colormap;
+			ClientEntities[cl.num_entities].colormap = display.colormap;
 			cl.num_entities++;
 		}
 	}
 
-	return &cl_entities[num];
+	return &ClientEntities[num];
 }
 
 
@@ -306,7 +306,7 @@ void CL_ParseServerInfo(void)
 
 
 	// local state
-	cl_entities[0].model = cl.worldmodel = cl.model_precache[1];
+	ClientEntities[0].model = cl.worldmodel = cl.model_precache[1];
 
 	R_NewMap();
 

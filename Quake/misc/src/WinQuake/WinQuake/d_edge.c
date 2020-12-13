@@ -179,7 +179,7 @@ void D_DrawSurfaces (void)
 	vec3_t			world_transformed_modelorg;
 	vec3_t			local_modelorg;
 
-	currententity = &cl_entities[0];
+	currententity = &ClientEntities[0];
 	TransformVector (modelorg, transformed_modelorg);
 	VectorCopy (transformed_modelorg, world_transformed_modelorg);
 
@@ -267,7 +267,7 @@ void D_DrawSurfaces (void)
 				// FIXME: we don't want to do this every time!
 				// TODO: speed up
 				//
-					currententity = &cl_entities[0];
+					currententity = &ClientEntities[0];
 					VectorCopy (world_transformed_modelorg,
 								transformed_modelorg);
 					VectorCopy (base_vpn, vpn);
@@ -315,7 +315,7 @@ void D_DrawSurfaces (void)
 				// FIXME: we don't want to do this every time!
 				// TODO: speed up
 				//
-					currententity = &cl_entities[0];
+					currententity = &ClientEntities[0];
 					VectorCopy (world_transformed_modelorg,
 								transformed_modelorg);
 					VectorCopy (base_vpn, vpn);

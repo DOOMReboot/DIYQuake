@@ -84,8 +84,8 @@ int	vcrFile = -1;
 qboolean recording = false;
 
 // these two macros are to make the code more readable
-#define sfunc	net_drivers[sock->driver]
-#define dfunc	net_drivers[net_driverlevel]
+//#define sfunc	net_drivers[sock->driver]
+//#define dfunc	net_drivers[net_driverlevel]
 
 int	net_driverlevel;
 
@@ -186,7 +186,7 @@ static void NET_Listen_f (void)
 	{
 		if (net_drivers[net_driverlevel].initialized == false)
 			continue;
-		dfunc.Listen (listening);
+		net_drivers[net_driverlevel].Listen (listening);
 	}
 }
 
@@ -320,7 +320,7 @@ static void Slist_Send(void)
 			continue;
 		if (net_drivers[net_driverlevel].initialized == false)
 			continue;
-		dfunc.SearchForHosts (true);
+		net_drivers[net_driverlevel].SearchForHosts (true);
 	}
 
 	if ((Sys_FloatTime() - slistStartTime) < 0.5)
@@ -336,7 +336,7 @@ static void Slist_Poll(void)
 			continue;
 		if (net_drivers[net_driverlevel].initialized == false)
 			continue;
-		dfunc.SearchForHosts (false);
+		net_drivers[net_driverlevel].SearchForHosts (false);
 	}
 
 	if (! slistSilent)
@@ -424,7 +424,7 @@ JustDoIt:
 	{
 		if (net_drivers[net_driverlevel].initialized == false)
 			continue;
-		ret = dfunc.Connect (host);
+		ret = net_drivers[net_driverlevel].Connect (host);
 		if (ret)
 			return ret;
 	}
@@ -466,7 +466,7 @@ qsocket_t *NET_CheckNewConnections (void)
 			continue;
 		if (net_driverlevel && listening == false)
 			continue;
-		ret = dfunc.CheckNewConnections ();
+		ret = net_drivers[net_driverlevel].CheckNewConnections ();
 		if (ret)
 		{
 			if (recording)
@@ -508,7 +508,7 @@ void NET_Close (qsocket_t *sock)
 	SetNetTime();
 
 	// call the driver_Close function
-	sfunc.Close (sock);
+	net_drivers[sock->driver].Close (sock);
 
 	NET_FreeQSocket(sock);
 }
@@ -552,7 +552,7 @@ int	NET_GetMessage (qsocket_t *sock)
 
 	SetNetTime();
 
-	ret = sfunc.QGetMessage(sock);
+	ret = net_drivers[sock->driver].QGetMessage(sock);
 
 	// see if this connection has timed out
 	if (ret == 0 && sock->driver)
@@ -636,7 +636,7 @@ int NET_SendMessage (qsocket_t *sock, sizebuf_t *data)
 	}
 
 	SetNetTime();
-	r = sfunc.QSendMessage(sock, data);
+	r = net_drivers[sock->driver].QSendMessage(sock, data);
 	if (r == 1 && sock->driver)
 		messagesSent++;
 
@@ -667,7 +667,7 @@ int NET_SendUnreliableMessage (qsocket_t *sock, sizebuf_t *data)
 	}
 
 	SetNetTime();
-	r = sfunc.SendUnreliableMessage(sock, data);
+	r = net_drivers[sock->driver].SendUnreliableMessage(sock, data);
 	if (r == 1 && sock->driver)
 		unreliableMessagesSent++;
 
@@ -704,7 +704,7 @@ qboolean NET_CanSendMessage (qsocket_t *sock)
 
 	SetNetTime();
 
-	r = sfunc.CanSendMessage(sock);
+	r = net_drivers[sock->driver].CanSendMessage(sock);
 	
 	if (recording)
 	{

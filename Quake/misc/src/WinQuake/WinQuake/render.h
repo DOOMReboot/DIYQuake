@@ -92,8 +92,8 @@ typedef struct
 	float		xOrigin;			// should probably allways be 0.5
 	float		yOrigin;			// between be around 0.3 to 0.5
 
-	vec3_t		vieworg;
-	vec3_t		viewangles;
+	vec3_t		vieworg; // AngryCPPCoder: view origin, position of eyes / camera 
+	vec3_t		viewangles; // AngryCPPCoder: view angles
 	
 	float		fov_x, fov_y;
 
