@@ -5,15 +5,11 @@
 class System
 {
 public:
-	static System* GetInstance();
+	System();
 	~System();
 	void Init();
 
 protected:
-	System();
-
-	static std::unique_ptr <System> m_pInstance;
-
 	void SDLInit();
 };
 

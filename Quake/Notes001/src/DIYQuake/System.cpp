@@ -3,23 +3,11 @@
 #include <iostream>
 #include <SDL.h>
 
-std::unique_ptr<System> System::m_pInstance = nullptr;
-
-System* System::GetInstance()
+System::System()
 {
-	if (!m_pInstance)
-	{
-		m_pInstance = std::unique_ptr<System>(new System());
-	}
-
-	return m_pInstance.get();
 }
 
 System::~System()
-{
-}
-
-System::System()
 {
 }
 

@@ -6,9 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-	System::GetInstance()->Init();
-
+	System system;
+	system.Init();
 	return 1;
 }
-
-

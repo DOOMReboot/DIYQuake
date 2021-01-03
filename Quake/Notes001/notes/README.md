@@ -1,6 +1,6 @@
 # Notes 001 - The Big Picture
 [__Recommended Reading__ : Quake’s 3-D Engine: The Big Picture by Michael Abrash](https://www.bluesnews.com/abrash/chap70.shtml)  
-
+  
 To start looking into any code, it is best to try and understand things as black boxes, to have a basic idea what to expect when we dive into the code. After we successfully got WinQuake to compile, we can go thought the code and look at how it draws a single frame on the screen and the best way to accomplish this is by looking for the EXE entry point (the "main" function) and drive our way from there.  
 
 Before we start, I would like to express my feelings after having a look at the code, the code is mind blowing! Tricks I have never seen before, and brilliant piece of engineering. Quake is much easier to read compared to DOOM, also the code has lots of in code documentation that clarify what is going one. Let's jump in!  
@@ -11,7 +11,7 @@ For example, files with postfix ```*_win.c``` is a windows specific files, so if
 
 Now looking at ```sys_*.c``` files we see a handful of OSs supported.  
 
-```
+```cpp
 sys_null.c   // file to be implemented for each OS
 sys_dos.c 
 sys_linux.c 
@@ -24,7 +24,7 @@ It is self-explanatory which file is for which OS.
 Now let’s go back to the Windows version WinMain, and have a quick look what happens there  
 Note: The comments below are mix of what was in original code + mine  
 
-```
+```cpp
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
     ...
@@ -79,7 +79,7 @@ Now we know what happens in WinMain, let’s have a look what happens in ```Host
 
 The function ```_Host_Frame``` can be found in [host.c](../../Notes000/src/WinQuake/WinQuake/host.c#L633)  
 
-```
+```cpp
 void _Host_Frame(float time)
 {
     ...
@@ -155,23 +155,25 @@ I will create few empty classes and headers as following
 And initialize SDL in the following
 * System.h will be equivalent to [sys.h](../../Notes000/src/WinQuake/WinQuake/sys.h). System IO function.  
 * System.cpp will be equivalent to [sys_win.c](../../Notes000/src/WinQuake/WinQuake/sys_win.c). System IO functions, we should use SDL for most of those functions.
-System class will follow [singleton design pattern](https://gameprogrammingpatterns.com/singleton.html), so it is easy to access anywhere in the code.
 
-```
-System* System::GetInstance()
+System will be very simple  
+
+```cpp
+class System
 {
-    if (!m_pInstance)
-    {
-        m_pInstance = std::unique_ptr<System>(new System());
-    }
+public:
+    System();
+    ~System();
+    void Init();
 
-    return m_pInstance.get();
-}
+protected:
+    void SDLInit();
+};
 ```
 
 Initializing the SDL library.
 
-```
+```cpp
 void System::Init()
 {
     SDLInit();
@@ -185,17 +187,15 @@ void System::SDLInit()
         std::cout << "ERROR: SDL failed to initialize! SDL_Error: " << SDL_GetError() << std::endl;
     }
 }
-
 ```
 
 * DIYQuake.cpp where my main function will live.
 
-
- ```
+ ```cpp
 int main(int argc, char *argv[])
 {
-    System::GetInstance()->Init();
-
+    System system;
+    system.Init();
     return 1;
 }
  ``` 
@@ -203,7 +203,7 @@ int main(int argc, char *argv[])
 * Common.h / cpp which will be equivalent to [common.h](../../Notes000/src/WinQuake/WinQuake/common.h) and [common.c](../../Notes000/src/WinQuake/WinQuake/common.c). The header file contains general utility functions memory copy, string compare, string copy etc. Looking at this file, it is interesting to see some standard C functions re-implemented (they didn't trust compiler implementation of those function).  
 A prefixed with ```Q_*``` to differ them from standard C functions, as seen below.  
 
-```
+```cpp
 void Q_memset (void *dest, int fill, int count);
 void Q_memcpy (void *dest, void *src, int count);
 int Q_memcmp (void *m1, void *m2, int count);
