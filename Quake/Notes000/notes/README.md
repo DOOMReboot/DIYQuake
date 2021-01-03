@@ -1,6 +1,6 @@
 Contributors  
 [DOOMReboot](https://github.com/DOOMReboot): Review/Edit  
-[kevansevans](https://github.com/kevansevans): organization suggestions  
+[kevansevans](https://github.com/kevansevans): Suggestions  
 
 # Notes 000 - Introduction  
 After spending some time looking into DOOM code and building up some knowledge, I wanted to look at another id Software game's source, and the next step from DOOM is Quake! I have lots of memories playing Quake! I still remember playing on my Pentium running at 90MHz with 8MB of RAM. What an experience it was (and still is).
