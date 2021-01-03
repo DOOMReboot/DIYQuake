@@ -1,5 +1,6 @@
 Contributors  
-[kevansevans](https://github.com/kevansevans): organization suggestions
+[DOOMReboot](https://github.com/DOOMReboot): Review/Edit  
+[kevansevans](https://github.com/kevansevans): organization suggestions  
 
 # Notes 000 - Introduction  
 After spending some time looking into DOOM code and building up some knowledge, I wanted to look at another id Software game's source, and the next step from DOOM is Quake! I have lots of memories playing Quake! I still remember playing on my Pentium running at 90MHz with 8MB of RAM. What an experience it was (and still is).
@@ -84,14 +85,14 @@ If you buy the Steam version of Quake, you will get V1.09 and Quake world binari
 
 Some interesting differences when comparing the CD-ROMs:
 
-V1.06 CD-ROM
--The size is only 24MB
--Everything on the CD is compressed
--A full install is required to play the game
+V1.06 CD-ROM  
+* The size is only 24MB  
+* Everything on the CD is compressed  
+* A full install is required to play the game  
 
-V1.09 CD-ROM 
--The size is 78MB 
--Includes an uncompressed “Data” folder
+V1.09 CD-ROM  
+* The size is 78MB  
+* Includes an uncompressed "Data" folder  
 
 My initial thought was that the differences in V1.09 were to allow the game to run from the CD-ROM (by having a minimum installation mode and then reading the assets from the CD-ROM), but the Windows installer never gave such an option; A full installation was required to play the game under Windows. It just seems weird to me, especially since the game's source code seems to support reading assets from any location.  
 
